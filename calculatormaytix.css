@@ -1,0 +1,234 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata&display=swap");
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+button,
+input,
+select,
+textarea {
+	font-family: inherit;
+	font-size: 100%;
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+textarea {
+	overflow: auto;
+}
+html {
+	font-size: 12px;
+	background: url("https://cdn.pixabay.com/photo/2017/11/16/09/32/matrix-2953869_960_720.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+body {
+	color: #000;
+	font-family: "Inconsolata", monospace;
+	height: 100vh;
+	width: 100%;
+	background: linear-gradient(
+			to right,
+			rgba(5, 5, 10, 0.6),
+			rgba(26, 138, 65, 0.6)
+		),
+		rgba(0, 0, 0, 0.6);
+	display: grid;
+	place-items: center;
+	background-size: 200%;
+	animation: 20s backgroundChange alternate infinite;
+}
+#calculatorWrap {
+	height: 80vh;
+	width: 60vh;
+	background: linear-gradient(
+		to left,
+		rgba(5, 5, 10, 1) 0%,
+		rgba(11, 58, 28, 0.9) 100%
+	);
+	border-radius: 2rem;
+	box-shadow: rgba(255, 255, 255, 0.3) 0px 19px 38px,
+		rgba(0, 0, 0, 0.22) 0px 15px 12px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.display-screen {
+	height: 10%;
+	width: 85%;
+	color: rgb(34, 180, 85);
+	box-shadow: 0px 0px 15px 1px rgba(255, 255, 255, 0.5);
+	border-radius: 2rem;
+	margin-bottom: 12%;
+	display: flex;
+	align-items: center;
+	padding-left: 5%;
+	font-size: 5vmin;
+	overflow: hidden;
+	transition: box-shadow 3s;
+}
+#buttonWrap {
+	height: 60%;
+	width: 90%;
+	display: grid;
+	grid-template-areas: "onOff C Del divide" "btn7 btn8 btn9 multiplyx" "btn4 btn5 btn6 minus" "btn1 btn2 btn3 plus" "btn0 Dot equals plus";
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(5, 1fr);
+	place-items: center;
+}
+.calculator-btn {
+	display: grid;
+	place-items: center;
+	width: 65%;
+	height: 55%;
+	border-radius: 2rem;
+	background-color: rgb(207, 207, 207);
+	box-shadow: rgba(255, 255, 255, 0.5) 0px 2px 15px;
+	font-size: 4vmin;
+	font-weight: bold;
+	opacity: 0.8;
+	transition: opacity 0.3s, transform 0.1s, box-shadow 3s;
+	cursor: pointer;
+}
+.calculator-btn:hover {
+	transition: opacity 0.3s;
+	opacity: 1;
+}
+.calculator-btn:active {
+	transition: transform 0.1s;
+	transform: scale(0.9);
+}
+#btn0 {
+	grid-area: btn0;
+}
+#btn1 {
+	grid-area: btn1;
+}
+#btn2 {
+	grid-area: btn2;
+}
+#btn3 {
+	grid-area: btn3;
+}
+#btn4 {
+	grid-area: btn4;
+}
+#btn5 {
+	grid-area: btn5;
+}
+#btn6 {
+	grid-area: btn6;
+}
+#btn7 {
+	grid-area: btn7;
+}
+#btn8 {
+	grid-area: btn8;
+}
+#btn9 {
+	grid-area: btn9;
+}
+#btnPlus {
+	grid-area: plus;
+	background-color: #80ce87;
+	height: 75%;
+}
+#btnMinus {
+	grid-area: minus;
+	background-color: #80ce87;
+}
+#btnMultiply {
+	grid-area: multiplyx;
+	background-color: #80ce87;
+}
+#btnDivide {
+	grid-area: divide;
+	background-color: #80ce87;
+}
+#btnEquals {
+	grid-area: equals;
+	background-color: #80afce;
+}
+#btnC {
+	grid-area: C;
+	background-color: #ce8080;
+}
+#btnDel {
+	grid-area: Del;
+	background-color: #ce8080;
+}
+#btnDot {
+	grid-area: Dot;
+	padding-bottom: 4vmin;
+	position: relative;
+}
+#btnOnOff {
+	grid-area: onOff;
+	position: relative;
+	overflow: hidden;
+	background-color: #000;
+	color: rgb(34, 180, 85);
+}
+#on {
+	position: absolute;
+	transition: transform 0.3s;
+}
+#off {
+	position: absolute;
+	transform: translateY(200%);
+}
+#onOffCheck {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 1;
+	opacity: 0;
+	cursor: pointer;
+}
+#onOffCheck:checked ~ #on {
+	transform: translateY(-200%);
+}
+#onOffCheck:checked ~ #off {
+	transform: translateY(0%);
+	transition: transform 0.3s;
+}
+/*classes for calculator on/off transition*/
+.box-shadow-none {
+	display: grid;
+	place-items: center;
+	width: 65%;
+	height: 55%;
+	border-radius: 2rem;
+	background-color: rgb(207, 207, 207);
+	box-shadow: none;
+	font-size: 4vmin;
+	font-weight: bold;
+	opacity: 0.8;
+	transition: opacity 0.3s, transform 0.1s;
+	cursor: pointer;
+	transition: box-shadow 3s;
+}
+.box-shadow-none-display-screen {
+	height: 10%;
+	width: 85%;
+	color: rgb(34, 180, 85);
+	box-shadow: none;
+	border-radius: 2rem;
+	margin-bottom: 12%;
+	display: flex;
+	align-items: center;
+	padding-left: 5%;
+	font-size: 5vmin;
+	overflow: hidden;
+	transition: box-shadow 3s;
+}
+@keyframes backgroundChange {
+	0% {
+		background-position: left;
+	}
+	100% {
+		background-position: right;
+	}
+}
